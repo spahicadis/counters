@@ -57,8 +57,34 @@ buttonDecrement.style.margin = "10px 10px 10px 10px"
 buttonIncrement.style.margin = "10px 10px 10px 10px"
 counterInit.style.margin = "10px 10px 10px 10px"
 
+buttonDecrement.addEventListener('click', function() {
+  initalCount = newCounter.init;
+  maxCount = newCounter.max;
+
+  
+  
+})
+
+buttonIncrement.addEventListener('click', function() {
+  initalCount ++
+  counters.forEach((element) => {
+    element.init = initalCount;
+    maxCount = element.max;
+    console.log(initalCount, maxCount);
+    console.log(initalCount);
+    
+    
+  })
+  
+  
+})
+
   
 });
+
+
+
+
 
 
 
