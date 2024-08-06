@@ -3,3 +3,38 @@
   padding: 0;
   font-family: Poppins, sans-serif;
 }
+
+
+.counter-module {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12rem;
+}
+
+.app-box {
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  width: 70%;
+  grid-column: 2;
+  row-gap: 0.4rem;
+  border: 2px solid black;
+  margin-top: 2rem;
+  border-radius: 0.8rem;
+  padding: 1.2rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+}
+
+.inital-count,
+.max-count {
+  width: 20%;
+}
+
+.buttonCreate {
+  padding: 0.4rem;
+  background-color: transparent;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  margin-top: 3px;
+}
