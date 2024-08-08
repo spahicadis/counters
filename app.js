@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid'
+
 //DOM
 const initalCountValue = document.querySelector('.inital-count-js');
 const maxCountValue = document.querySelector('.max-count-js');
@@ -78,9 +80,12 @@ buttonIncrement.addEventListener('click', function() {
   
   
 })
-
-  
 });
+
+
+let id = nanoid();
+console.log(id);
+
 
 
 
