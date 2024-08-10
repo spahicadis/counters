@@ -31,7 +31,7 @@ addCounterButton.addEventListener('click', function(){
     'max':maxCount,
     'id':id++
   }
-  counters.push(newCounter);
+  counters.push(counters);
   initalCount = 0;
   maxCount = 0;
   initalCountValue.value = '';
@@ -49,7 +49,6 @@ addCounterButton.addEventListener('click', function(){
   createdCountersDiv.appendChild(counterInit);
   createdCountersDiv.appendChild(buttonIncrement);
   createdCountersDiv.appendChild(countersBorder);
-
 buttonDecrement.style.height = ('50px');
 buttonDecrement.style.width = ('50px');
 buttonDecrement.style.display = ('inline');
@@ -64,17 +63,23 @@ buttonIncrement.style.margin = "10px 10px 10px 10px"
 counterInit.style.margin = "10px 10px 10px 10px"
 
 buttonDecrement.addEventListener('click', function() {
+  console.log(newCounter.id)
+
+
 
   
   
 })
 
 buttonIncrement.addEventListener('click', function() {
+console.log(newCounter.id)
 
   
   
 })
 });
+
+
 
 
 
