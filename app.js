@@ -1,4 +1,6 @@
-import { nanoid } from 'nanoid'
+//import { nanoid } from 'nanoid'
+//const uuidv4 = require("uuid/v4");
+
 
 //DOM
 const initalCountValue = document.querySelector('.inital-count-js');
@@ -9,6 +11,7 @@ const createdCountersDiv = document.querySelector('.createdCounters')
 //STATEs
 let initalCount = null;
 let maxCount = null;
+let id = 0;
 const counters = []
 
 
@@ -25,14 +28,15 @@ maxCountValue.addEventListener('input', function(e) {
 
 addCounterButton.addEventListener('click', function(){
   const newCounter = {'init':initalCount,
-    'max':maxCount
+    'max':maxCount,
+    'id':id++
   }
   counters.push(newCounter);
   initalCount = 0;
   maxCount = 0;
   initalCountValue.value = '';
   maxCountValue.value = '';
-  
+  console.log(newCounter);
   const countersBorder = document.createElement("p");
   const counterInit = document.createElement("p");
   const buttonIncrement = document.createElement("button");
@@ -60,31 +64,22 @@ buttonIncrement.style.margin = "10px 10px 10px 10px"
 counterInit.style.margin = "10px 10px 10px 10px"
 
 buttonDecrement.addEventListener('click', function() {
-  initalCount = newCounter.init;
-  maxCount = newCounter.max;
 
   
   
 })
 
 buttonIncrement.addEventListener('click', function() {
-  initalCount ++
-  counters.forEach((element) => {
-    element.init = initalCount;
-    maxCount = element.max;
-    console.log(initalCount, maxCount);
-    console.log(initalCount);
-    
-    
-  })
+
   
   
 })
 });
 
 
-let id = nanoid();
-console.log(id);
+
+
+
 
 
 
