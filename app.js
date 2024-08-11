@@ -6,13 +6,13 @@
 const initalCountValue = document.querySelector('.inital-count-js');
 const maxCountValue = document.querySelector('.max-count-js');
 const addCounterButton = document.querySelector('.button-create-js');
-const createdCountersDiv = document.querySelector('.createdCounters')
+const createdCountersDiv = document.querySelector('.createdCounters');
 
 //STATEs
 let initalCount = null;
 let maxCount = null;
 let id = 0;
-const counters = []
+const counters = [];
 
 
 //BINDING
@@ -62,8 +62,14 @@ buttonDecrement.style.margin = "10px 10px 10px 10px"
 buttonIncrement.style.margin = "10px 10px 10px 10px"
 counterInit.style.margin = "10px 10px 10px 10px"
 
+
 buttonDecrement.addEventListener('click', function() {
-  console.log(newCounter.id)
+console.log(counters);
+initalCount = newCounter.init;
+maxCount = newCounter.max;
+console.log(initalCount, maxCount, newCounter.id);
+
+
 
 
 
@@ -72,12 +78,17 @@ buttonDecrement.addEventListener('click', function() {
 })
 
 buttonIncrement.addEventListener('click', function() {
-console.log(newCounter.id)
+console.log(counters);
+initalCount = newCounter.init;
+maxCount = newCounter.max;
+console.log(initalCount, maxCount, newCounter.id);
 
   
-  
+
 })
 });
+
+
 
 
 
