@@ -92,6 +92,9 @@ console.log(initalCount, maxCount);
 newCounter.init ++;
 counterInit.innerHTML =`${newCounter.init}`;
 console.log(initalCount);
+if(initalCount==maxCount) {
+  alert('stop');
+}
 
 
 })
