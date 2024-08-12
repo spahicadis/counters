@@ -32,23 +32,26 @@ addCounterButton.addEventListener('click', function(){
     'id':id++
   }
   counters.push(newCounter);
+  console.log(newCounter, counters);
   initalCount = 0;
   maxCount = 0;
   initalCountValue.value = '';
   maxCountValue.value = '';
-  console.log(newCounter);
   const countersBorder = document.createElement("p");
   const counterInit = document.createElement("p");
   const buttonIncrement = document.createElement("button");
   const buttonDecrement = document.createElement("button");
+  const info = document.createElement("span");
   buttonDecrement.innerHTML = `Minus`;
   counterInit.innerHTML = newCounter.init
   buttonIncrement.innerHTML = `Plus`;
-  countersBorder.innerHTML = `Init:${newCounter.init},  Max:${newCounter.max} <br>`;
+  countersBorder.innerHTML = `Init:${newCounter.init},  Max:${newCounter.max}`;
+  info.innerHTML = `ℹ️ <br>`
   createdCountersDiv.appendChild(buttonDecrement);
   createdCountersDiv.appendChild(counterInit);
   createdCountersDiv.appendChild(buttonIncrement);
   createdCountersDiv.appendChild(countersBorder);
+  createdCountersDiv.appendChild(info);
 buttonDecrement.style.height = ('50px');
 buttonDecrement.style.width = ('50px');
 buttonDecrement.style.display = ('inline');
@@ -61,29 +64,35 @@ countersBorder.style.margin = "0px"
 buttonDecrement.style.margin = "10px 10px 10px 10px"
 buttonIncrement.style.margin = "10px 10px 10px 10px"
 counterInit.style.margin = "10px 10px 10px 10px"
+info.style.margin = "10px 10px 10px 10px"
+
+info.addEventListener('click', function() {
+  console.log(counters);
+  console.log(newCounter);
+  console.log(newCounter.id, newCounter.init, newCounter.max);
+})
 
 
 buttonDecrement.addEventListener('click', function() {
-console.log(counters[0].id);
 initalCount = newCounter.init;
-maxCount = newCounter.max;
-console.log(initalCount, maxCount, newCounter.id);
+maxCount = newCounter.max
+console.log(initalCount, maxCount);
+newCounter.init --;
+counterInit.innerHTML =`${newCounter.init}`;
+console.log(initalCount);
 
 
 
-
-
-  
-  
 })
 
 buttonIncrement.addEventListener('click', function() {
-console.log(counters[0].id);
 initalCount = newCounter.init;
-maxCount = newCounter.max;
-console.log(initalCount, maxCount, newCounter.id);
+maxCount = newCounter.max
+console.log(initalCount, maxCount);
+newCounter.init ++;
+counterInit.innerHTML =`${newCounter.init}`;
+console.log(initalCount);
 
-  
 
 })
 });
