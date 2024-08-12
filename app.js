@@ -31,7 +31,7 @@ addCounterButton.addEventListener('click', function(){
     'max':maxCount,
     'id':id++
   }
-  counters.push(counters);
+  counters.push(newCounter);
   initalCount = 0;
   maxCount = 0;
   initalCountValue.value = '';
@@ -64,7 +64,7 @@ counterInit.style.margin = "10px 10px 10px 10px"
 
 
 buttonDecrement.addEventListener('click', function() {
-console.log(counters);
+console.log(counters[0].id);
 initalCount = newCounter.init;
 maxCount = newCounter.max;
 console.log(initalCount, maxCount, newCounter.id);
@@ -78,7 +78,7 @@ console.log(initalCount, maxCount, newCounter.id);
 })
 
 buttonIncrement.addEventListener('click', function() {
-console.log(counters);
+console.log(counters[0].id);
 initalCount = newCounter.init;
 maxCount = newCounter.max;
 console.log(initalCount, maxCount, newCounter.id);
