@@ -1,5 +1,6 @@
 //import { nanoid } from 'nanoid'
 //const uuidv4 = require("uuid/v4");
+//Small break, because Im learning some others stuff online
 
 
 //DOM
