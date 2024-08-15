@@ -1,25 +1,25 @@
 //import { nanoid } from 'nanoid'
 //const uuidv4 = require("uuid/v4");
-//Small break, because Im learning some others stuff online
+
 
 
 //DOM
-const initalCountValue = document.querySelector('.inital-count-js');
+const initialCountValue = document.querySelector('.initial-count-js');
 const maxCountValue = document.querySelector('.max-count-js');
 const addCounterButton = document.querySelector('.button-create-js');
 const createdCountersDiv = document.querySelector('.createdCounters');
 
 //STATEs
-let initalCount = null;
+let initialCount = null;
 let maxCount = null;
-let id = 0;
+let id = 1;
 const counters = [];
 
 
 //BINDING
-initalCountValue.addEventListener('input', function(e) {
-  initalCount = parseInt(e.target.value);
-  console.log(initalCount);
+initialCountValue.addEventListener('input', function(e) {
+  initialCount = parseInt(e.target.value);
+  console.log(initialCount);
 })
 
 maxCountValue.addEventListener('input', function(e) {
@@ -27,32 +27,36 @@ maxCountValue.addEventListener('input', function(e) {
   console.log(maxCount);
 })
 
+//increment
+
 addCounterButton.addEventListener('click', function(){
-  const newCounter = {'init':initalCount,
+  const newCounter = {'init':initialCount,
     'max':maxCount,
-    'id':id++
+    'id':id++,
+    'initBorder':initialCount,
+    'maxBorder':maxCount
   }
-  counters.push(newCounter);
-  console.log(newCounter, counters);
-  initalCount = 0;
-  maxCount = 0;
-  initalCountValue.value = '';
-  maxCountValue.value = '';
-  const countersBorder = document.createElement("p");
-  const counterInit = document.createElement("p");
-  const buttonIncrement = document.createElement("button");
-  const buttonDecrement = document.createElement("button");
-  const info = document.createElement("span");
-  buttonDecrement.innerHTML = `Minus`;
-  counterInit.innerHTML = newCounter.init
-  buttonIncrement.innerHTML = `Plus`;
-  countersBorder.innerHTML = `Init:${newCounter.init},  Max:${newCounter.max}`;
-  info.innerHTML = `ℹ️ <br>`
-  createdCountersDiv.appendChild(buttonDecrement);
-  createdCountersDiv.appendChild(counterInit);
-  createdCountersDiv.appendChild(buttonIncrement);
-  createdCountersDiv.appendChild(countersBorder);
-  createdCountersDiv.appendChild(info);
+counters.push(newCounter);
+console.log(newCounter, counters);
+initialCount = 0;
+maxCount = 0;
+initialCountValue.value = '';
+maxCountValue.value = '';
+const countersBorder = document.createElement("p");
+const counterInit = document.createElement("p");
+const buttonIncrement = document.createElement("button");
+const buttonDecrement = document.createElement("button");
+const info = document.createElement("span");
+buttonDecrement.innerHTML = `Minus`;
+counterInit.innerHTML = newCounter.init
+buttonIncrement.innerHTML = `Plus`;
+countersBorder.innerHTML = `Init:${newCounter.init},  Max:${newCounter.max}`;
+info.innerHTML = `ℹ️ <br>`
+createdCountersDiv.appendChild(buttonDecrement);
+createdCountersDiv.appendChild(counterInit);
+createdCountersDiv.appendChild(buttonIncrement);
+createdCountersDiv.appendChild(countersBorder);
+createdCountersDiv.appendChild(info);
 buttonDecrement.style.height = ('50px');
 buttonDecrement.style.width = ('50px');
 buttonDecrement.style.display = ('inline');
@@ -73,32 +77,35 @@ info.addEventListener('click', function() {
   console.log(newCounter.id, newCounter.init, newCounter.max);
 })
 
-
-buttonDecrement.addEventListener('click', function() {
-initalCount = newCounter.init;
-maxCount = newCounter.max
-console.log(initalCount, maxCount);
-newCounter.init --;
-counterInit.innerHTML =`${newCounter.init}`;
-console.log(initalCount);
-
-
-
-})
-
-buttonIncrement.addEventListener('click', function() {
-initalCount = newCounter.init;
-maxCount = newCounter.max
-console.log(initalCount, maxCount);
-newCounter.init ++;
-counterInit.innerHTML =`${newCounter.init}`;
-console.log(initalCount);
-if(initalCount==maxCount) {
-  alert('stop');
+function decrement() {
+  initialCount = newCounter.init-1;
+  maxCount = newCounter.max;
+  console.log(initialCount, maxCount);
+  --newCounter.init;
+  counterInit.innerHTML = `${newCounter.init}`;
+  console.log(initialCount, maxCount);
+  console.log(newCounter.initBorder, newCounter.maxBorder);
+  if(initialCount == newCounter.initBorder) {
+    buttonDecrement.removeEventListener('click', decrement);
+  }
 }
 
+function increment() {
+  initialCount = newCounter.init+1;
+  maxCount = newCounter.max;
+  console.log(initialCount, maxCount);
+  ++newCounter.init;
+  counterInit.innerHTML = `${newCounter.init}`;
+  console.log(initialCount);
+  console.log(newCounter.initBorder, newCounter.maxBorder);
+  if(initialCount == newCounter.maxBorder) {
+    buttonIncrement.removeEventListener('click', increment);
+  }
+}
 
-})
+buttonDecrement.addEventListener('click', decrement)
+buttonIncrement.addEventListener('click', increment)
+
 });
 
 
