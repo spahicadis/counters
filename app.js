@@ -28,6 +28,10 @@ const buttonIncrement = document.createElement("button");
 const counterCounting = document.createElement("span");
 const counterRange = document.createElement("span");
 const displayCounterInfo = document.createElement("span");
+const counterContainer = document.querySelector(".createdCounters");
+console.log(counters[counterID]);
+
+
 }
 
 buttonAddCounter.addEventListener('click', function() {
