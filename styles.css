@@ -42,4 +42,13 @@
 .createdCounters {
   grid-column: 1;
   border: 2px solid black;
+  
 }
+
+.counterDiv {
+  display: flex;
+  flex-direction: row;
+  column-gap: 12px;
+  margin-bottom: 15px;
+}
+

@@ -9,6 +9,7 @@ let initialValue;
 let maxValue;
 let counterID = 0;
 const counters = [];
+let trackNum = 0;
 
 
 //BINDING
@@ -23,20 +24,32 @@ maxCounterValue.addEventListener('input', function(e) {
 })
 
 function renderCounters() {
+const counterDiv = document.createElement("div");
 const buttonDecrement = document.createElement("button");
-const buttonIncrement = document.createElement("button");
 const counterCounting = document.createElement("span");
+const buttonIncrement = document.createElement("button");
 const counterRange = document.createElement("span");
 const displayCounterInfo = document.createElement("span");
 const counterContainer = document.querySelector(".createdCounters");
-console.log(counters[counterID]);
-
-
+counterDiv.classList.add("counterDiv")
+buttonDecrement.innerText =  `➖`
+buttonIncrement.innerText = `➕`
+counterCounting.innerText = `${counters[trackNum].initial}`
+counterRange.innerText = `Min: ${counters[trackNum].initial}, Max: ${counters[trackNum].max} `
+displayCounterInfo.innerHTML = `ℹ️`
+counterDiv.appendChild(buttonDecrement);
+counterDiv.appendChild(counterCounting);
+counterDiv.appendChild(buttonIncrement);
+counterDiv.appendChild(counterRange);
+counterDiv.appendChild(displayCounterInfo);
+counterContainer.appendChild(counterDiv)
+trackNum++
 }
+
 
 buttonAddCounter.addEventListener('click', function() {
   const counter = {
-    id: counterID++,
+    id: counterID,
     initial: initialValue,
     max: maxValue
   }
