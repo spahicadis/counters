@@ -32,6 +32,7 @@ const counterRange = document.createElement("span");
 const displayCounterInfo = document.createElement("span");
 const counterContainer = document.querySelector(".createdCounters");
 counterDiv.classList.add("counterDiv")
+displayCounterInfo.classList.add("infoButton")
 buttonDecrement.innerText =  `➖`
 buttonIncrement.innerText = `➕`
 counterCounting.innerText = `${counters[trackNum].initial}`
@@ -47,6 +48,7 @@ trackNum++
 
 decrement(buttonDecrement, counterCounting, counterID);
 increment(buttonIncrement, counterCounting, counterID);
+getCounterInfo(displayCounterInfo, counterID);
 
 
 }
@@ -100,6 +102,28 @@ function increment(btnIncrement, counterCounting, id) {
     console.log("vrijednost je dosegla granicu")
     return
   }
+})
+}
+
+function getCounterInfo(counterInfo, id) {
+counterInfo.addEventListener('click', function() {
+  let displayInitialBorder = counters[id].initial;
+  let displayMaxBorder = counters[id].max;
+  let displayId = counters[id].id
+  Toastify({
+    text: "Button info: \n" + "Inital border: " + displayInitialBorder + "\n" + "Max border: " + displayMaxBorder + "\n" + "displayID: " + displayId,
+    duration: 3000,
+    destination: "https://github.com/apvarun/toastify-js",
+    newWindow: true,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "center", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+    onClick: function(){} // Callback after click
+  }).showToast();
 })
 }
 
