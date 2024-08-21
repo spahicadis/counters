@@ -7,7 +7,7 @@ const buttonAddCounter = document.querySelector('.button-create-js');
 //STATEs
 let initialValue;
 let maxValue;
-let counterID = 0;
+let counterID = -1;
 const counters = [];
 let trackNum = 0;
 
@@ -44,14 +44,20 @@ counterDiv.appendChild(counterRange);
 counterDiv.appendChild(displayCounterInfo);
 counterContainer.appendChild(counterDiv)
 trackNum++
+
+decrement(buttonDecrement, counterCounting, counterID);
+increment(buttonIncrement, counterCounting, counterID);
+
+
 }
 
 
 buttonAddCounter.addEventListener('click', function() {
   const counter = {
-    id: counterID,
+    id: counterID++,
     initial: initialValue,
-    max: maxValue
+    max: maxValue,
+    initalBorder: initialValue,
   }
   counters.push(counter);
   console.log(counters)
@@ -62,4 +68,39 @@ buttonAddCounter.addEventListener('click', function() {
   maxCounterValue.value = "";
   renderCounters()
 })
+
+function decrement(btnDecrement, counterCounting, id) {
+    btnDecrement.addEventListener('click', function() {
+      if(counters[id].initial === counters[id].initalBorder ) {
+        console.log("vrijednost je dosegla granicu")
+        return
+      }
+    initialValue = counters[id].initial;
+    maxValue = counters[id].max;
+    --counters[id].initial;
+    counterCounting.innerText = counters[id].initial
+    if(counters[id].initial === counters[id].initalBorder) {
+      console.log("vrijednost je dosegla granicu")
+      return
+    }
+  })
+}
+
+function increment(btnIncrement, counterCounting, id) {
+   btnIncrement.addEventListener('click', function() {
+    if(counters[id].initial === counters[id].max ) {
+      console.log("vrijednost je dosegla granicu")
+      return
+    }
+  initialValue = counters[id].initial;
+  maxValue = counters[id].max;
+  ++counters[id].initial;
+  counterCounting.innerText = counters[id].initial
+  if(counters[id].initial === counters[id].max) {
+    console.log("vrijednost je dosegla granicu")
+    return
+  }
+})
+}
+
 
